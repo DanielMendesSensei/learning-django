@@ -23,10 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-71424dbbp$3=x(8ik9bo(g_&6hlzw$#w@y5o5_4o#zoprdd62^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #Aqui quanto trocado para false, é quando iremso publicar
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [] #Aqui você coloca os hosts permitidos para acessar após publicado
+'''
+ALLOWED_HOSTS = [
+    '127.0.0.1'
+]
+'''
 
 # Application definition
 
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    #"whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,6 +128,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [ #Adicionei caminhos de pasta para os arquivos estáticos globais
     BASE_DIR / 'assets' / 'static'
 ]
+
+STATIC_ROOT = BASE_DIR / 'static_files'
 
 
 # Default primary key field type

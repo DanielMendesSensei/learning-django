@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from blog.templates.blog import data
-#from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from typing import Any
 
 
 # Quando você estiver refatorando,
@@ -11,7 +12,7 @@ def index(request):
     context = {
         'text': 'Olá, esse é o blog',
         'title': 'Blog',
-        'posts': data.posts,
+        'posts': data.data_posts,
     }
     return render(
         request,
@@ -19,12 +20,27 @@ def index(request):
         context,
     )
 
-def posts(request, id):
-    print(f'Você está no post: {id}')
+def posts(request: HttpResponse, post_id: int):
+    #tipagem de variável para tipo dicionario, recebendo sua chave como string, e valor como qualquer um
+    #vem da biblioteca typing Any. Ou então sendo None
+    found_post: dict[str, Any] or None = None
+
+    #laço da lista, em arquivos do data.py
+    for post in data.data_posts:
+        if post['id'] == post_id:
+            found_post = post
+            break
+
+    #print(f'Você está no post: {post_id}')
+
+    #condicional se caso o valor ainda for None, ou seja, não está na lista
+    if found_post is None:
+        raise Http404("POST NÃO EXISTE")
+
     context = {
         #'text': 'Olá, esse é o blog',
-        #'title': 'Blog',
-        'posts': data.posts,
+        'posts': [found_post],
+        'title': found_post['title'],
     }
     return render(
         request,

@@ -44,6 +44,14 @@ ntro do projeto, afim de fazer o aninhamento de URLS
     assim podemos criar uma função que recebe request e id, e através disso abrir n coisas, vide os arquivos como exemplo
 20º Em seguida podemos fazer com que no HTML tenha uma variável atribuida ao id, no caso desse exemplo, aos posts salvo em data.py e chamando-a
     através de {% urls 'nome_app:post' nome_variável %}.
+21º Deve ser utilizado o comando python manage.py collectstatic toda vez que ouver mudança nos arquivos html, css, dentro do projeto
+    para que na hora de por pra produção, esses arquivos possam ser copiador para alimentar o banco de dados
 
 NOTA: Para usar comandos do git, deve se utilizar o terminal zhs, com sudo.
+NOTA_2: Não dá para rodar comandos do manage.py direto no terminal do visual estudio code, tendo que fazer pelo terminal do ubunto
+NOTA_3: ficar sempre atendo com os venvs, pois pelo zsh pode dar algum erro, caso persistir, desisntale todas as venvs, crie uma nova
+pelo ubunto, e instala pelo arquivo requirements os pacotes
+
+
+
 
