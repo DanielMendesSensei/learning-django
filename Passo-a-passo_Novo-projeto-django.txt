@@ -1,0 +1,49 @@
+1º passo, criar uma projeto a parte no Pycharm (Já cria a venv sozinha e ativa)
+	se não, usar python -m venv venv
+	e ativar a venv.
+2º abra o terminal, instale o django na venv.
+3º crie um projeto atribuindo o arquivo manage.py direto na raíz, dando "." no final do nome do projeto (django-admin startproject nome_do_projeto .)
+4º crie um ou vários apps, dependendo do seu projeto, se o todo o conteúdo do projeto se tratar da mesma temática
+   exemplo: um site com página de login, cadastro... não tem necessidade de criar um app para cada página
+   agora, se de tudo as páginas forem muito diferentes, aí sim, um app para cada.
+   python.exe manage.py startapp "nome-do-app"
+5º crie o arquivo URLs.py para cada app de
+ntro do projeto, afim de fazer o aninhamento de URLS
+   para facilitar a inserção de roots no domínio.
+6º Configure o arquivo URLs do projeto, para chamar através do include os arquivos URLs.py de todos os apps do projeto
+7º Use o Render para abrir os arquivos HTML, passando requeste e o nome do arquivo html
+   que deve estar dentro de uma pasta chamada templates, que deverá estar dentro da raíz do app
+8º Configure o arquivo settings.py para atribuir os apps criados na variável INSTALLED_APPS = [
+9º Para evitar colisão de nome de arquivos estáticos, utilizamos o método namespace, que consiste
+   em criar um pasta de mesmo nome do app, dentro de templates
+10º Para facilitar, pode ser criado um diretório na raíz do projeto chamado de assets, e dentro dela,
+    um namespace chamado global, e nela colocar todos os templates de arquivos estáticos
+    logo depois em setting.py templates dir, adicionar um BASE_DIR com o nome da pasta raíz assets
+    com isso você pode ir lá nos arquivos estáticos dos apps e modificalos para extender da templete
+    global, usando {% extends 'global/index.html %} por exemplo, e modificar
+    assim criando a herança
+11º Através dos Partial podemos ter arquivos parciais com trechos específicos do HTML, para facilitar ainda mais a manutenção
+    e insersão de arquivos no site, para fazermos isso, devemos criar um diretório dentro de global, chamado partials, e usando
+    {% include 'global/partials/insersao.html'%} deve ser adicionado no html dentro de global
+12º Para manipulação de arquivos estáticos como css, js. devemos criar uma pasta para cada app chamada static
+    no html da head principal deve ser adicionado o comando {% load static %} antes da declaração HTML
+    no href deve ser colocado {% static 'nome.css' %}. Se caso não atualizar de primeira, reinicie o servidor.
+    lembre de utilizar namespace também para static para evitar conflito de nomes
+13º Assim dentro de static/nome-do-app, você pode organizar os arquivos css, js, imagens entre outros estáticos para serem chamados no
+    html.
+14º através do context, parâmero do request em views, podemos dar nomes para variáveis do tipo dicionario
+    para atrelar ao HTML, tornando mais dinâmico a inclusão de dados por arquivo View.
+15º Usando  {% url 'nome' %} podemos inserir urls no HTML, mas para isso você precisa passar o parâmetro name= lá no
+    path do arquivo URLs.py de cada app
+16º Dar namespaces para as URLs, criando uma variável chamada app_name e passando o nome do app, isso no arquivo URls.py
+17º Podemos criar blocos usando o {% block nome %} {% endblock %} no template raiz, e assim alterar o que desejamos no template
+    local do app
+18º De forma para que criarmos um css global, podemos inserir em settings.py a string STATICFILES_DIRS = [ BASE_DIR / 'assets' / 'static' ]
+    Assim adicionamos uma pasta na qual irá conter arquivos estáticos globais
+19º Podemos configurar urls dinâmicas, utilizando um novo parâmetro como <id> após o path, exemplo path('posts/<id>'....
+    assim podemos criar uma função que recebe request e id, e através disso abrir n coisas, vide os arquivos como exemplo
+20º Em seguida podemos fazer com que no HTML tenha uma variável atribuida ao id, no caso desse exemplo, aos posts salvo em data.py e chamando-a
+    através de {% urls 'nome_app:post' nome_variável %}.
+
+NOTA: Para usar comandos do git, deve se utilizar o terminal zhs, com sudo.
+

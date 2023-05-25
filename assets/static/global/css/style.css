@@ -1,0 +1,32 @@
+*,
+*:after,
+*:before
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html
+{
+font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    background-color: #f1f1f1;
+    font-family: system-ui, -apple-system, BlinkMacSys
+}
+
+.content
+{
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.post
+{
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 5px 2px 5px hsla(136, 0%, 70%, 1.0);
+}
