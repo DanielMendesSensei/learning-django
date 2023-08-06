@@ -25,12 +25,12 @@ SECRET_KEY = 'django-insecure-71424dbbp$3=x(8ik9bo(g_&6hlzw$#w@y5o5_4o#zoprdd62^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #Aqui quanto trocado para false, é quando iremso publicar
 
-ALLOWED_HOSTS = [] #Aqui você coloca os hosts permitidos para acessar após publicado
-'''
+#ALLOWED_HOSTS = [] #Aqui você coloca os hosts permitidos para acessar após publicado
+
 ALLOWED_HOSTS = [
-    '127.0.0.1'
+    #'127.0.0.1'
 ]
-'''
+
 
 # Application definition
 

@@ -4,6 +4,8 @@ chromedriver
 mysql_206
 .env
 Django/static_files
+/static_files
+.static_files
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

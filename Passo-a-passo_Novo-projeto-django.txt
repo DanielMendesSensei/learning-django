@@ -11,7 +11,7 @@
 ntro do projeto, afim de fazer o aninhamento de URLS
    para facilitar a inserção de roots no domínio.
 6º Configure o arquivo URLs do projeto, para chamar através do include os arquivos URLs.py de todos os apps do projeto
-7º Use o Render para abrir os arquivos HTML, passando requeste e o nome do arquivo html
+7º Use o Render para abrir os arquivos HTML, passando request e o nome do arquivo html
    que deve estar dentro de uma pasta chamada templates, que deverá estar dentro da raíz do app
 8º Configure o arquivo settings.py para atribuir os apps criados na variável INSTALLED_APPS = [
 9º Para evitar colisão de nome de arquivos estáticos, utilizamos o método namespace, que consiste
